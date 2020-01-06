@@ -42,8 +42,6 @@ FROM node:13-alpine
 COPY --from=build /app /app
 WORKDIR /app
 
-# expose port 80
-EXPOSE 80
 ARG PORT=80
 
 # run nginx
