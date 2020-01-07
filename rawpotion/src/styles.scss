@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+
+  min-width: 420px;
+}
+
+* {
+  margin: 0;
+  @import url("https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800&display=swap");
+  font-family: "Montserrat", "arial";
+}

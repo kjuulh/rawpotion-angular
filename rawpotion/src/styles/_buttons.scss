@@ -1,0 +1,51 @@
+@import "./colors";
+@import "./shadows";
+
+@mixin button {
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.2em;
+  padding: 15px 40px;
+  border-radius: 50px;
+  height: fit-content;
+}
+
+@mixin filled-button {
+  @include button;
+  background-color: $foreground;
+  color: $background;
+  @include drop-shadow(4px);
+  transition: 200ms ease-in all;
+
+  &:hover {
+    background-color: rgba($foreground, 0.8);
+    @include drop-shadow(2px);
+  }
+
+  &:active {
+    background-color: rgba($foreground, 0.9);
+    @include drop-shadow(3px);
+  }
+}
+
+@mixin hollow-button {
+  @include button;
+  background-color: $background;
+  color: $foreground;
+  @include drop-shadow(4px);
+  border: 1px solid $foreground;
+  transition: 200ms ease-in all;
+
+  &:hover {
+    border: 1px solid rgba($foreground, 0.8);
+    color: rgba($foreground, 0.9);
+    @include drop-shadow(2px);
+  }
+
+  &:active {
+    border: 1px solid rgba($foreground, 0.9);
+    color: rgba($foreground, 0.9);
+    @include drop-shadow(3px);
+  }
+}

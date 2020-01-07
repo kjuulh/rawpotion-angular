@@ -1,0 +1,13 @@
+@import "./buttons";
+@import "./colors";
+@import "./shadows";
+
+.button {
+  &.hollow {
+    @include hollow-button;
+  }
+
+  &.filled {
+    @include filled-button;
+  }
+}

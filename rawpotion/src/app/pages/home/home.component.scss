@@ -1,0 +1,125 @@
+@import "./colors";
+@import "./buttons";
+
+#home {
+  display: flex;
+  height: 100%;
+
+  .navbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 40px 20px;
+    justify-items: end;
+
+    a {
+      float: right;
+    }
+
+    .login {
+      margin: 0px 20px;
+    }
+
+    .register {
+    }
+  }
+
+  .container {
+    max-width: 840px;
+    max-height: 500;
+    width: 100%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+    grid-template-areas: "left right";
+
+    .left {
+      grid-area: left;
+      width: 100%;
+
+      h1 {
+        font-size: 52px;
+        font-weight: 800;
+        text-transform: uppercase;
+        -webkit-text-stroke: 3px $foreground;
+        -webkit-text-fill-color: $background;
+        stroke: 3px $foreground;
+        color: $background;
+        margin-bottom: 70px;
+        letter-spacing: 15px;
+      }
+
+      p {
+        margin-left: 30px;
+        font-size: 26px;
+        margin-bottom: 80px;
+      }
+
+      a {
+        @include filled-button;
+      }
+    }
+
+    .right {
+      grid-area: right;
+      display: grid;
+
+      img {
+        margin: auto;
+        height: 200px;
+        width: 200px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  #home {
+    display: grid;
+    grid-template-areas: "container" "navbar";
+
+    .navbar {
+      position: relative;
+      grid-area: navbar;
+      display: grid;
+      height: fit-content;
+      row-gap: 20px;
+
+      a {
+        float: none;
+        justify-self: center;
+      }
+
+      .login,
+      .register {
+        margin: 15px auto;
+      }
+    }
+
+    .container {
+      grid-area: container;
+      display: grid;
+      grid-template-columns: none;
+      grid-template-areas: "right" "left";
+      row-gap: 40px;
+
+      .right {
+        margin: 0 auto;
+      }
+
+      .left {
+        text-align: center;
+        margin-bottom: 0;
+
+        a {
+          display: none;
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
