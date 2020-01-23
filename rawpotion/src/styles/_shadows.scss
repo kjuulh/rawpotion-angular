@@ -1,6 +1,6 @@
 @import "./colors";
 
-@mixin drop-shadow($size) {
-  box-shadow: $size $size 4 * $size rgba(black, 0.1);
-  transition: 200ms ease-in box-shadow;
+@mixin drop-shadow($size, $opacity: 0.3) {
+  box-shadow: $size $size 4 * $size rgba(black, $opacity);
+  transition: 200ms box-shadow;
 }

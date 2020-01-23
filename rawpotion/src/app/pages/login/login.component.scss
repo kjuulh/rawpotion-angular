@@ -1,4 +1,233 @@
-#logon {
+@import "./colors";
+@import "./shadows";
+@import "./hover";
+#login {
   width: 100%;
   height: 100%;
+  background: url("/assets/images/login/bg.png") center no-repeat;
+  background-size: cover;
+  display: grid;
+
+  form {
+    margin: auto;
+    background-color: $background;
+    width: 100%;
+    height: 100%;
+    max-width: 480px;
+    max-height: 520px;
+    padding: 30px; //Might cause problems
+    border-radius: 40px;
+
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+      "header"
+      "inputs"
+      "buttons";
+
+    .heading {
+      grid-area: header;
+      display: flex;
+      justify-content: space-between;
+
+      h1 {
+        font-size: 32px;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 3px;
+        color: $foreground;
+      }
+
+      button {
+        height: 40px;
+        width: 40px;
+
+        background-color: $foreground;
+        color: $background;
+        border: none;
+        border-radius: 50px;
+        outline: none;
+
+        @include hover;
+        transition: 0.2s;
+
+        &:hover {
+          height: 44px;
+          width: 44px;
+          transition: 0.2s;
+        }
+
+        &:active {
+          height: 40px;
+          width: 40px;
+          transition: 0.2s;
+        }
+      }
+    }
+
+    .fields {
+      grid-area: inputs;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+
+      .form-group {
+        height: 100%;
+        margin: 5px;
+        padding: 5px;
+        text-align: center;
+        display: grid;
+        grid-template-areas:
+          "alert"
+          "input";
+        grid-template-rows: 1fr 1fr;
+
+        .alert {
+          margin: 5px 0;
+          font-size: 12px;
+          text-transform: uppercase;
+          font-weight: 600;
+          letter-spacing: 1px;
+
+          &.alert-danger {
+            color: $danger;
+          }
+        }
+
+        input {
+          letter-spacing: 1px;
+          border: none;
+          outline: none;
+          text-align: center;
+          font-size: 16px;
+          border-bottom: 1px solid lighten($color: $foreground-alt, $amount: 50);
+          padding: 10px 20px;
+          transition: 0.5s;
+
+          &:focus {
+            border-bottom-color: $foreground;
+          }
+
+          &::placeholder {
+            text-transform: uppercase;
+            font-weight: 600;
+            color: $foreground;
+          }
+        }
+      }
+    }
+
+    .buttons {
+      grid-area: buttons;
+      align-self: end;
+      justify-self: center;
+      display: grid;
+      grid-template-columns: 5fr 1fr 1fr;
+      width: 100%;
+      max-width: 300px;
+
+      button {
+        border: none;
+        outline: none;
+        margin: 3px;
+
+        @include hover;
+
+        background-color: $foreground;
+        color: $background;
+        text-transform: uppercase;
+        height: 35px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        font-size: 14px;
+        transition: 0.3s;
+
+        &:disabled {
+          background-color: darken($color: $background, $amount: 30);
+        }
+
+        &:hover:enabled {
+          background-color: lighten($color: $foreground, $amount: 10);
+          transition: 0.3s;
+        }
+
+        &:active:enabled {
+          background-color: lighten($color: $foreground, $amount: 5);
+          transition: 0.3s;
+        }
+      }
+
+      .email-password {
+        border-radius: 50px 5px 5px 50px;
+      }
+
+      .facebook {
+        border-radius: 5px;
+      }
+
+      .google {
+        border-radius: 5px 50px 50px 5px;
+      }
+
+      .facebook,
+      .google {
+        width: 40px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  #login {
+    background: none;
+
+    form {
+      grid-template-rows: auto 1fr 1fr 1fr;
+      grid-template-areas:
+        "image"
+        "breaker"
+        "header"
+        "inputs"
+        "buttons";
+
+      &::before {
+        grid-area: image;
+        content: "";
+        background: url("/assets/images/login/bg.png") no-repeat top center;
+        background-size: cover;
+        height: 250px;
+      }
+
+      &::after {
+        grid-area: breaker;
+        content: "";
+        background: url("/assets/images/login/bg-swoop.svg") no-repeat bottom
+          center;
+        background-size: 110%;
+        height: 201px;
+        margin-top: -200px;
+      }
+
+      margin: 0;
+      border-radius: 0;
+      padding: 0;
+      max-width: none;
+
+      .heading {
+        max-width: 400px;
+        width: 100%;
+        min-width: 200px;
+        height: 50px;
+        justify-self: center;
+        margin-top: 20px;
+      }
+
+      .buttons {
+        margin-top: 50px;
+      }
+    }
+  }
 }

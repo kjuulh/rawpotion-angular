@@ -1,0 +1,12 @@
+@import "./shadows";
+
+@mixin hover {
+  @include drop-shadow(4px, 0.2);
+
+  &:hover {
+    @include drop-shadow(4px, 0.3);
+  }
+  &:active {
+    @include drop-shadow(2px, 0.3);
+  }
+}

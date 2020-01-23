@@ -1,10 +1,7 @@
-import { Component, OnInit } from "@angular/core";
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators
-} from "@angular/forms";
+import {Component, OnInit} from "@angular/core";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+
+import {Location} from "@angular/common";
 
 @Component({
   selector: "app-login",
@@ -12,15 +9,26 @@ import {
   styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit {
+
+  constructor(private formBuilder: FormBuilder, private location: Location) {
+  }
+
+  get email() {
+    return this.loginForm.get("email");
+  }
+
+  get password() {
+    return this.loginForm.get("password");
+  }
+
+  loginForm: FormGroup;
+
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
       password: ["", [Validators.required, Validators.minLength(8)]]
     });
   }
-  loginForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) {}
 
   onSubmit() {
     console.warn("Login attempt submitted");
@@ -30,11 +38,7 @@ export class LoginComponent implements OnInit {
     this.loginForm.reset();
   }
 
-  get email() {
-    return this.loginForm.get("email");
-  }
-
-  get password() {
-    return this.loginForm.get("password");
+  goBack() {
+    this.location.back();
   }
 }

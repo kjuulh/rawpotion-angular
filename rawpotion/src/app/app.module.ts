@@ -9,6 +9,7 @@ import { NotFoundComponent } from "./pages/not-found/not-found.component";
 import { ButtonComponent } from "./components/button/button.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from "@angular/forms";
     HomeComponent,
     NotFoundComponent,
     ButtonComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "serverApp" }),
